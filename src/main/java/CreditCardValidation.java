@@ -46,8 +46,7 @@ public class CreditCardValidation {
         return validatedCreditCards;
     }
 
-
-    public static void main(String args[] ) throws Exception {
+    public static void main(String args[]) throws Exception {
         Scanner input = new Scanner(System.in);
         String[] bannedPrefixes = input.nextLine().split(",");
         int lines = Integer.parseInt(input.nextLine());
@@ -57,7 +56,7 @@ public class CreditCardValidation {
         processedCards.stream().forEach(CreditCardValidation::printCardResult);
     }
 
-    public static void printCardResult(Map<String, Object> cardResult) {
+    private static void printCardResult(Map<String, Object> cardResult) {
         System.out.print("{\"card\":\"" +  cardResult.get("card") + "\",");
         System.out.print("\"isValid\":" +  cardResult.get("isValid") + ",");
         System.out.println("\"isAllowed\":" +  cardResult.get("isAllowed") + "}");
