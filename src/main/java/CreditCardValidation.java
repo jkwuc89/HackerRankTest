@@ -19,21 +19,18 @@ public class CreditCardValidation {
         bannedPrefixRegex.append(").*");
 
         for (String cardToValidate : cardsToValidate) {
-            boolean isAllowed = true;
-
             // Compute the checksum using all but the last digit
-            int digitIndex;
-            int summedDoubledDigits = 0;
-            for (digitIndex = 0; digitIndex < (cardToValidate.length() - 1); digitIndex++) {
-                summedDoubledDigits += (cardToValidate.charAt(digitIndex) - '0') * 2;
-            }
-            int lastDigit = (cardToValidate.charAt(digitIndex) - '0');
+            int cardLength = cardToValidate.length();
+            int summedDoubledDigits = cardToValidate.chars()
+                    .limit(cardLength - 1)
+                    .reduce(0, (a, b) -> a + (b - '0') * 2);
+            int lastDigit = (cardToValidate.charAt(cardLength - 1) - '0');
 
             // Validate checksum against last digit
             boolean isValid = (summedDoubledDigits % 10 == lastDigit);
 
             // Does card start with banned prefix?
-            isAllowed = !cardToValidate.matches(bannedPrefixRegex.toString());
+            boolean isAllowed = !cardToValidate.matches(bannedPrefixRegex.toString());
 
             // Add validation results to the returned list
             Map<String, Object> creditCard = new HashMap<>();
