@@ -1,12 +1,12 @@
 buildscript {
     ext {
-        gradleVersion = "4.+"
+        gradleVersion = "4.8.+"
         gsonVersion = "2.8.+"
         jsonSimpleVersion = "1.1.+"
         junitPluginVersion = "1.+"
         junitVersion = "5.+"
         jvmVersion = "1.8"
-        kotlinVersion = "1.+"
+        kotlinVersion = "1.2.41"
     }
 
     repositories {
@@ -27,7 +27,6 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'kotlin'
-apply plugin: "org.junit.platform.gradle.plugin"
 
 sourceCompatibility = jvmVersion
 
@@ -51,4 +50,8 @@ compileKotlin {
 
 compileTestKotlin {
     kotlinOptions.jvmTarget = jvmVersion
+}
+
+test {
+    useJUnitPlatform()
 }

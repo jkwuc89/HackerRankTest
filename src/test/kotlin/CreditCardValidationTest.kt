@@ -3,15 +3,12 @@ import org.junit.jupiter.api.Test
 import java.util.*
 import java.util.stream.IntStream
 
-
-
 /**
  * CreditCardValidationTests
  *
  * @author Keith Wedinger <br>
  * Created On: 1/31/18
  */
-
 class CreditCardValidationTest {
     private fun convertValidatedCardsToString(validatedCards: List<Map<String, Any>>): String {
         val validatedCardsStringBuilder = StringBuilder()
