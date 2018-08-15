@@ -1,12 +1,11 @@
 buildscript {
     ext {
-        gradleVersion = "4.8.+"
         gsonVersion = "2.8.+"
         jsonSimpleVersion = "1.1.+"
         junitPluginVersion = "1.+"
         junitVersion = "5.+"
         jvmVersion = "1.8"
-        kotlinVersion = "1.2.41"
+        kotlinVersion = "1.2.60"
     }
 
     repositories {
@@ -14,12 +13,7 @@ buildscript {
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
-        classpath "org.junit.platform:junit-platform-gradle-plugin:$junitPluginVersion"
     }
-}
-
-task wrapper(type: Wrapper) {
-    gradleVersion = gradleVersion
 }
 
 group 'com.keithwedinger'
